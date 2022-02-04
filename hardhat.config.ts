@@ -25,8 +25,15 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 const config: HardhatUserConfig = {
   solidity: "0.8.4",
   networks: {
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
+    fuji: {
+      chainId: 43113,
+      gasPrice: 225000000000,
+      url: "https://api.avax-test.network/ext/bc/C/rpc",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    rinkeby: {
+      url: "https://rinkeby.infura.io/v3/e7aec242b2414e9ebfb4a35bd1aca726",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
