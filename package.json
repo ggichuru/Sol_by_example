@@ -9,6 +9,11 @@
   "dependencies": {
     "hardhat": "^2.8.3"
   },
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy:rinkeby": "npx hardhat run scripts/deploy.ts --network rinkeby",
+    "deploy:fuji": "npx hardhat run scripts/deploy.ts --network fuji"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.0",
     "@nomiclabs/hardhat-etherscan": "^2.1.3",
