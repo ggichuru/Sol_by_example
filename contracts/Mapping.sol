@@ -26,3 +26,25 @@ contract Mapping {
         myMap[_addr] += 10;
     }
 }
+
+contract NestedMapping {
+    /// @dev nested mapping from address to another mapping
+    mapping(address => mapping(uint256 => bool)) public nested;
+
+    /// @dev get values from a nested mapping :- even when its not initialized
+    function get(address _addr, uint256 _i) external view returns (bool val) {
+        val = nested[_addr][_i];
+    }
+
+    function set(
+        address _addr,
+        uint256 _i,
+        bool _bool
+    ) external {
+        nested[_addr][_i] = _bool;
+    }
+
+    function remove(address _addr, uint256 _i) external {
+        delete nested[_addr][_i];
+    }
+}

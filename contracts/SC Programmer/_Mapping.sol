@@ -4,6 +4,9 @@ pragma solidity ^0.8.13;
 contract Mappings {
     mapping(address => uint256) public balances;
 
+    /// @dev nested mapping is friend
+    mapping(address => mapping(address => bool)) public isFriend;
+
     function examples() external returns (uint256 _bal) {
         // Add to mapping
         balances[msg.sender] = 10;
@@ -19,5 +22,8 @@ contract Mappings {
 
         // Delete
         delete balances[msg.sender]; // 0
+
+        // Set is friend to this contract
+        isFriend[msg.sender][address(this)] = true;
     }
 }
